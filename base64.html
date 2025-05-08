@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>Base64 解碼工具</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f2f2f2;
+    }
+
+    textarea, input {
+      width: 100%;
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .output {
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h2>Base64 解碼工具</h2>
+
+  <label for="base64Input">請輸入 Base64 字串：</label>
+  <textarea id="base64Input" rows="5" placeholder="輸入 base64 編碼..."></textarea>
+
+  <button onclick="decodeBase64()">解碼</button>
+
+  <h3>解碼結果：</h3>
+  <div id="decodedOutput" class="output">（結果會顯示在這裡）</div>
+
+  <script>
+    function decodeBase64() {
+      const input = document.getElementById('base64Input').value.trim();
+      const output = document.getElementById('decodedOutput');
+
+      try {
+        // Base64 解碼
+        const decoded = atob(input);
+        output.textContent = decoded;
+      } catch (e) {
+        output.textContent = '⚠️ 無法解碼，請確認輸入的 Base64 字串格式正確';
+      }
+    }
+  </script>
+</body>
+</html>
